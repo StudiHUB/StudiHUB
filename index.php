@@ -877,6 +877,7 @@ categories
         $check="SELECT * FROM accounts where id='$idc'";
         $result=mysqli_query($conn,$check);
         while ($row = mysqli_fetch_array($result)) {
+            $id=$row['id'];
           $fname=$row['first_name'];
           $lname=$row['last_name'];
           $email=$row['email'];
@@ -895,8 +896,21 @@ categories
       <a href="javascript:void(0)" class="closebtn back" onclick="closeProfile()"><i class="fa fa-chevron-left"></i> Close</a>
 
           <div class="img-container">
-            <a href="crop_image" >
-              <img src="users/profile/profile_picture/avatar.png" alt="yellow" class="img-fluid">
+            <a href="ajax-uploader" >
+
+              <?php
+              //php code for default image to show when the status of the db is 0
+              $checkquery=mysqli_query($conn,"SELECT * FROM profileimage WHERE userid='$id'");
+              while ($res=mysqli_fetch_array($checkquery)) {$res=$res["status"];}
+                if (mysqli_num_rows($res)<0) {
+                echo"<img src=\"users/profile/profile_picture/avatar.png\" alt=\"yellow\" class=\"img-fluid\">";
+              }else {
+                echo"<img src=\"users/user".$id."/".$id."_thump.jpg\" alt=\"yellow\" class=\"img-fluid\">";
+              }
+
+//php code for default image to show when the status of the db is 0
+
+              ?>
             </a>
             <!-- name and school -->
             <div class="name">
