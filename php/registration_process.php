@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("conn.php");
 
 if(!isset($_POST['submit'])) {
@@ -48,7 +49,14 @@ header("location:../signup/index.php?error=password+miss+match");
 }
 else {
   mysqli_query($conn, "insert into accounts set email='$email', institution='$school', password='$password', last_name='$last_name', first_name='$first_name', level='$level', faculty='$faculty', registration_date='$registration_date', phone='$phone'") or die(mysqli_error($conn));
-  header("location:../login/");}
+$imgquery=mysqli_query($conn,"SELECT * FROM accounts WHERE email='$email'");
+while ($row=mysqli_fetch_array($imgquery)) {
+  $id=$row["id"];
+}
+$setquery=mysqli_query($conn,"INSERT into profileimage SET userid='$id'");
+  header("location:../login/");
+
+}
 
         }
 
