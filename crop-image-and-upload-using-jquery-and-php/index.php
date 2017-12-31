@@ -22,7 +22,7 @@ include('/header.php');
 				<br/>
 				<input type="file" id="images">
 				<br/>
-				<button class="btn btn-success cropped_image">Upload Image</button>
+				<button class="btn btn-success cropped_image" type="submit">Upload Image</button>
 	  		</div>
 	  		<div class="col-md-4 crop_preview">
 				<div id="upload-image-i"></div>
@@ -30,7 +30,7 @@ include('/header.php');
 	  	</div>
 	  </div>
 	</div>
-	
+
 
 </div>
 <?php include('footer.php');?>

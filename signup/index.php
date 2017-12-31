@@ -43,6 +43,8 @@ div.alert-danger{
   border-radius: 20%;
 
 }
+
+
 .info{
   padding: 10px;
   background: #27ae60;
@@ -85,7 +87,8 @@ div.alert-danger{
   <fieldset>
     <h2 class="fs-title">Student Profile</h2>
     <h3 class="fs-subtitle">Your academic presence</h3>
-    <select name="school"class="custom-select">
+    <input list="uni" placeholder="University">
+    <datalist id="uni" name="school"class="custom-select">
       <option disabled selected>University</option>
       <option value="not_in_school">Not in School</option>
       <option value="Abia State University">Abia State University</option>
@@ -246,7 +249,7 @@ div.alert-danger{
 
 
 
-    </select>
+    </datalist>
     <select name="level"class="custom-select">
       <option selected>Level</option>
       <option value="100">100 Level</option>
@@ -259,7 +262,12 @@ div.alert-danger{
       <option value="not_in_school">Not in School</option>
 
     </select>
-    <select name="faculty"class="custom-select">
+
+
+
+
+    <input list="fac" placeholder="Faculty">
+    <datalist id="fac" name="faculty"class="custom-select">
       <option selected disabled>Faculty</option>
       <option value="not_in_school">Not in School</option>
       <option value="Faculty of Administration">Faculty of Administration</option>
@@ -276,7 +284,8 @@ div.alert-danger{
 
 
 
-    </select>
+    </datalist>
+
     <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>

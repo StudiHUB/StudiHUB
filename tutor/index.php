@@ -122,15 +122,16 @@ Describe the content first
   <form action="../php/uploadvideo.php" method="post" enctype="multipart/form-data">
 
 
-
+<!--
    <div class="course-description">
      <div class="input-group" style="padding-left:50px;padding-right:50px;">
-<!--input--> <input type="text" name="material_name"  class="form-control" value="" placeholder="Material e.g MTH123(summary)"><!-- name="material" for material upload-->
+<!--input--/> <input type="text" name="material_name"  class="form-control" value="" placeholder="Material e.g MTH123(summary)">
+<!-- name="material" for material upload-/->
      </div>
      <label for="file" class="button-file-upload">
        <span class="fake-upload-button"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Upload Material</span><small style="color:red; font-size:11px;">(Optional)</small>
      <span class="js-button-file-upload-text button-file-upload-text"></span>
-<!--input--> <input type="file" id="file" name="materialfile" class="js-button-file-upload-input">
+<!--input--/> <input type="file" id="file" name="materialfile" class="js-button-file-upload-input">
    </label>
 
    <span class="pan-description">
@@ -139,7 +140,7 @@ Describe the content first
 
 
  </div>
-
+-->
  <div class="course-description">
 <h5>How do you Charge?</h5>
 <div class="price-input input-group"><span class="input-group-addon">
@@ -169,7 +170,7 @@ Describe the content first
               <textarea name="video_decription" rows="4" cols="80" placeholder="Tell us what is in the video...." class="form-control"></textarea>
             <!--<input type="file" class="form-control" name="video" id="html_btn" accept="video/*"/>-->
               <br>  <label for="video_link">Paste the Video's link here <a style="font-size:12px;font-weight:bold;"href="#">Learn more.</a></label>
-              <input type="text" class="form-control" name="video_link" placeholder="Add Video link here..(Vimeo/wistia)"/>
+              <input type="text" class="form-control" name="video_link" placeholder="Add Video link here..(Vimeo/Youtube)"/>
           <!--<button type="button" class="btn btn-dark new_Btn">Upload Video</button>-->
 
 
