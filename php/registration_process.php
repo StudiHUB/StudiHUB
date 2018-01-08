@@ -15,6 +15,8 @@ else{
   $school=$conn->real_escape_string(htmlentities($_POST["school"],ENT_QUOTES));
   $faculty=$conn->real_escape_string(htmlentities($_POST["faculty"],ENT_QUOTES));
   $level=$conn->real_escape_string(htmlentities($_POST["level"],ENT_QUOTES));
+if (!empty($first_name) && !empty($last_name) && !empty($phone) && !empty($email) && !empty($confirm_password) && !empty($password) && !empty($school) && !empty($faculty) && !empty($level) ) {
+
 
 
 
@@ -43,7 +45,7 @@ header("location:../signup/index.php?error=Email+already+in+use");
 
 else if($password!==$confirm_password) {
 $_SESSION['msg']="<font color=\"red\"><b> Password confirmation did not match!</b></font>";
-echo $_SESSION['msg'];
+
 header("location:../signup/index.php?error=password+miss+match");
 
 }
@@ -58,10 +60,14 @@ $setquery=mysqli_query($conn,"INSERT into profileimage SET userid='$id'");
 
 }
 
-        }
+}else {
+  $_SESSION['msg']="<font color=\"red\"><b> All fields must be filled!</b></font>";
+
+  header("location:../signup/index.php?error=All fields must be filled!");
+}
 
 
-
+}
 
 
 

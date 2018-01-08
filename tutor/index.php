@@ -21,6 +21,9 @@ body{
 .course-description div.price-input{
 padding:0px 40px!important;
 }
+.ml-auto{
+  display: none;
+}
 .course-description{
 width: 100%;
 height: auto;

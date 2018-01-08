@@ -1,3 +1,5 @@
+<?php session_start();
+?>
 <!DOCTYPE html>
 <html >
 <head>
@@ -111,7 +113,11 @@ a{
 }
 </style>
 </head>
-<body>
+<body><?php
+  if (@$_SESSION['accessdenied']) {
+  echo"Access denied!";
+
+  }?>
   <div class="container-fluid" id="c"></div>
   <div class="container-fluid">
 <form id="msform" action="../php/login_process.php" method="post">
@@ -129,3 +135,4 @@ a{
   </div>
 </body>
 </html>
+<?php $_SESSION['accessdenied']=""; ?>

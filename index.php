@@ -6,11 +6,12 @@ include('php/conn.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>StudiHUB | Videos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="bootstrap-tour.min.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" media='screen and (min-width: 1px) and (max-width: 900px)' href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<link rel="stylesheet" media='screen and (min-width: 1px) and (max-width: 900px)' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link media='screen and (min-width: 1px) and (max-width: 900px)' href="bootstrap-tour.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" async></script>
 <style>
 body{
   margin: 0;
@@ -536,10 +537,11 @@ div.tab-pane{
   <div  class="container-fluid" id="main">
 <nav class="navbar navbar-dark bg-dark header" id="firstnav">
 
-    <a class="navbar-brand" href="#">Studi<span class="hub" style="color:red;font-weight:bold;">HUB</span><!--<i class="fa fa-play-circle fa-2x" aria-hidden="true">--></i>
+    <a class="navbar-brand" href="#">
+      <!--Studi<span class="hub" style="color:red;font-weight:bold;">HUB</span><!--<i class="fa fa-play-circle fa-2x" aria-hidden="true">--><!--</i>-->
+      <img src="images/logo.jpg.png" width="150px">
 
-
-  <i class="fa fa fa-play-circle" ></i>
+  <!--<i class="fa fa fa-play-circle" ></i>-->
 </a>
 <!-- user link for login and signup -->
 <?php if (@$_SESSION["id"]) {
@@ -647,7 +649,7 @@ categories
                 <!--  <li class="list-group-item"><a href="#"><i class="fa fa-home " aria-hidden="true"></i> Home</a>-->
 <?php if (@$_SESSION["id"]) {
                 echo  "<li class=\"list-group-item\" ><a href=\"tutor\"style=\"text-align:center; padding:5px;color:#fff;\" class=\"btn btn-success\"><i class=\"fa fa-plus-circle\"> Upload video</i></a>
-                <a href=\"materials\"style=\"text-align:center; padding:5px;color:#fff;\" class=\"btn btn-success\"><i class=\"fa fa-share\"> Share Material</i></a>
+                <a href=\"materials/upload-materials\"style=\"text-align:center; padding:5px;color:#fff;\" class=\"btn btn-success\"><i class=\"fa fa-share\"> Share Material</i></a>
                 </li>";
               }else {
                 echo  "<li class=\"list-group-item\" ><a href=\"login\"style=\"text-align:center; padding:5px;color:#fff;\" class=\"btn btn-warning\"><i class=\"fa fa-plus-circle\"> Upload video</i></a></li>";
@@ -655,7 +657,7 @@ categories
               }
 ?>
                 <li class="list-group-item list-group-item-primary"><i class="fa fa-folder " aria-hidden="true"></i> Course categories</li>
-                <a href="#"><li class="list-group-item"><i class="fa fa-book " aria-hidden="true"></i> Study Material</li></a>
+                <a href="materials"><li class="list-group-item"><i class="fa fa-book " aria-hidden="true"></i> Study Material</li></a>
                 <a href="ask"><li class="list-group-item"><i class="fa fa-stack-exchange " aria-hidden="true"></i> Ask</li></a>
                 <a  href="#"><li class="list-group-item"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="lists"> STORE</span><sup><span class="badge badge-success">3</span></sup></li></a>
                 <a href="#"><li class="list-group-item"><i class="fa fa-newspaper-o" aria-hidden="true"></i><span class="lists"> NEWS/UPDATE</span><sup><span class="badge badge-success">3</span></sup></li></a>
@@ -1053,10 +1055,10 @@ function closeSignup(){
 }
 </script>
 
-<script src="bootstrap-tour.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="bootstrap-tour.min.js" async></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous" async></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous" async></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous" async></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" async></script>
 
 </body>
