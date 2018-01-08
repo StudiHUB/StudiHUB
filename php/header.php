@@ -1,7 +1,9 @@
 <?php
 
 echo "<nav class=\"navbar navbar-dark bg-dark nav\">
-<a class=\"navbar-brand\" href=\"../\">Studi<span style=\"color:red;font-weight:bold;\">HUB</span><!--<i class=\"fa fa-play-circle \" aria-hidden=\"true\">--></i>
+<a class=\"navbar-brand\" href=\"../\">
+
+Studi<span style=\"color:red;font-weight:bold;\">HUB</span><!--<i class=\"fa fa-play-circle \" aria-hidden=\"true\">--></i>
 </a>
 <a class=\"ml-auto usericonlink\" style=\"color:white; margin-right: 2px;\"
 data-toggle=\"collapse\"

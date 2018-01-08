@@ -2,7 +2,7 @@
 session_start();
 
 include("conn.php");
-
+    $level=$conn->real_escape_string(htmlentities($_POST["level"],ENT_QUOTES));
     $course_code=$conn->real_escape_string(htmlentities($_POST["material_name"],ENT_QUOTES));
     //material name made the course code because, of name confusions
     $university=$conn->real_escape_string(htmlentities($_POST["school"],ENT_QUOTES));
@@ -14,10 +14,10 @@ include("conn.php");
     $material_name=$conn->real_escape_string(htmlentities($_POST["course_code"],ENT_QUOTES));
       //"material_name" accepts "course_code" while "course_code" accepts "material_name".
     $cartegory=$conn->real_escape_string(htmlentities($_POST["selection"],ENT_QUOTES));
-    if (empty($university)||empty($course_code)||empty($cartegory)||empty($material_name)) {
+    if (empty($university)||empty($course_code)||empty($cartegory)||empty($material_name)||empty($level)) {
       //if the fields are empty take them back to the page.
         $_SESSION["uploadmsg"]="All fields are compulsory (Required)!";
-      header("location:../materials/");
+      header("location:../materials/upload-materials/");
 
     }else {
 
@@ -51,31 +51,32 @@ $allowed = array('pdf','doc','docx','ppt');
 
         $uploadwithextension=$material_name.".".$fileActualExt;
         $material_destination="../materials/".$cartegory."/".$university."/".$faculty."/";
+        $material_destinationfordb="/materials/".$cartegory."/".$university."/".$faculty."/";
         if(!is_dir($material_destination)){//makes the directory with the user id
             mkdir($material_destination, 0777, true);
          }/*echo "$uploadwithextension";*/
          move_uploaded_file($pdffiletmplocation, "$material_destination/$uploadwithextension");
-         $insert="INSERT into materials SET material_name='$course_code', path='$material_destination$uploadwithextension',university='$university',faculty='$faculty',course_code='$material_name',cartegory='$cartegory'";
+         $insert="INSERT into materials SET material_name='$course_code', path='$material_destinationfordb$uploadwithextension',university='$university', faculty='$faculty', course_code='$material_name', cartegory='$cartegory',level='$level'";
          $query=mysqli_query($conn,$insert);
          $_SESSION["uploadsuccess"]="Upload success!";
-         header("location:../materials/");
+         header("location:../materials/upload-materials/");
        }else{
          $_SESSION["uploadmsg"]="A file with that exact name already exists";
-         header("location:../materials/");
+         header("location:../materials/upload-materials/");
        }
       }else {
       $_SESSION["uploadmsg"]="FILE IS TOO LARGE!";
-      header("location:../materials/");
+      header("location:../materials/upload-materials/");
       }
     }else{$_SESSION["uploadmsg"]="ERROR UPLOADING! File was too Large!";
-      header("location:../materials/");}
+      header("location:../materials/upload-materials/");}
   }else{
     $_SESSION["uploadmsg"]="You must upload a pdf or Word doc file";
-    header("location:../materials/");
+    header("location:../materials/upload-materials/");
   }
 }else {
   $_SESSION["uploadmsg"]="ie no gree upload!";
-  header("location:../materials/");
+  header("location:../materials/upload-materials/");
 }
 }
 else{echo "its empty why?";}

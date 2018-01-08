@@ -92,6 +92,7 @@ $(document).ready(function (e) {
 			$("#targetLayer").html(data);
 			$("#targetLayer").css('opacity','1');
 			setInterval(function() {$("#body-overlay").hide(); },500);
+      window.location = '../index.php#myProfile';
 			},
 		  	error: function()
 	    	{
