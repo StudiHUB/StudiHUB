@@ -6,11 +6,30 @@ include('php/conn.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>StudiHUB | Videos</title>
+  <title>StudiHUB | Tutorials</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" media='screen and (min-width: 1px) and (max-width: 900px)' href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-<link rel="stylesheet" media='screen and (min-width: 1px) and (max-width: 900px)' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link media='screen and (min-width: 1px) and (max-width: 900px)' href="bootstrap-tour.min.css" rel="stylesheet">
+  <!-- logo -->
+  <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="images/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="images/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="images/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="manifest" href="images/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<!-- logo ending -->
+<link rel="stylesheet" media='screen and (min-width: 1px)' href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<link rel="stylesheet" media='screen and (min-width: 1px)' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" async></script>
 <style>
 body{
@@ -18,7 +37,7 @@ body{
   padding: 0;
   }
 .navbar#firstnav{
-  height: 33px;
+  height: 40px;
 }
 .container-fluid .navbar-expand-sm{
   box-shadow: 0px 2px 10px 0px #D3D4D5;
@@ -110,7 +129,9 @@ background-color: #ffffff!important;
 }
 .droplist ul{
   position: absolute;
-  left: 0;
+    padding: 0;
+    left: 0;
+    text-align: center;
   right: 0;
   margin: auto;
     width: 100%;
@@ -661,7 +682,7 @@ categories
                 <a href="ask"><li class="list-group-item"><i class="fa fa-stack-exchange " aria-hidden="true"></i> Ask</li></a>
                 <a  href="#"><li class="list-group-item"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="lists"> STORE</span><sup><span class="badge badge-success">3</span></sup></li></a>
                 <a href="#"><li class="list-group-item"><i class="fa fa-newspaper-o" aria-hidden="true"></i><span class="lists"> NEWS/UPDATE</span><sup><span class="badge badge-success">3</span></sup></li></a>
-                <a href="#"><li class="list-group-item"><i class="fa fa-question " aria-hidden="true"></i> About Us</li></a>
+                <a href="about_us.php"><li class="list-group-item"><i class="fa fa-question " aria-hidden="true"></i> About Us</li></a>
               </ul>
             </div>
         </div>
@@ -685,7 +706,7 @@ categories
                           </div>
 
                             <div class="price">
-                              N500
+                              FREE
                             </div>
                             <div class="views">
                               Views<b> 10</b>
@@ -1001,32 +1022,27 @@ categories
 
 
 </div>
+<script type="text/javascript">
+//This is the "Offline copy of pages" service worker
 
+//Add this below content to your HTML page, or add the js file to your page at the very top to register sercie worker
+if (navigator.serviceWorker.controller) {
+console.log('[PWA Builder] active service worker found, no need to register')
+} else {
+//Register the ServiceWorker
+navigator.serviceWorker.register('pwabuilder-sw.js', {
+  scope: './'
+}).then(function(reg) {
+  console.log('Service worker has been registered for scope:'+ reg.scope);
+});
+}
+
+
+</script>
 <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 --><script>
-
-//tour guide
-var tour = new Tour({
-  steps: [
-  {
-    nav: "#firstnav",
-    title: "Title of my step",
-    content: "this is the first nav"
-  },
-  {
-    element: "#main",
-    title: "This is the main",
-    content: "<p>hffhhfkhfk</p>"
-  }
-]});
-
-// Initialize the tour
-tour.init();
-
-// Start the tour
-tour.start();
 
 function openNav() {
     document.getElementById("mySidenav").style.width = "100%";
@@ -1055,7 +1071,7 @@ function closeSignup(){
 }
 </script>
 
-<script src="bootstrap-tour.min.js" async></script>
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous" async></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous" async></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous" async></script>

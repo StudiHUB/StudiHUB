@@ -15,10 +15,26 @@ else{
   $school=$conn->real_escape_string(htmlentities($_POST["school"],ENT_QUOTES));
   $faculty=$conn->real_escape_string(htmlentities($_POST["faculty"],ENT_QUOTES));
   $level=$conn->real_escape_string(htmlentities($_POST["level"],ENT_QUOTES));
-if (!empty($first_name) && !empty($last_name) && !empty($phone) && !empty($email) && !empty($confirm_password) && !empty($password) && !empty($school) && !empty($faculty) && !empty($level) ) {
 
 
+if (empty($first_name) || empty($last_name)){
+        $_SESSION['msg']="<font color=\"red\"><b> All fields must be filled!</b></font>";
+        header("location:../signup/index.php?error=All fields must be filled!");}
+        elseif( empty($phone) || empty($email)) {
+          $_SESSION['msg']="<font color=\"red\"><b> All fields must be filled!</b></font>";
+          header("location:../signup/index.php?error=All fields must be filled!");
+        }elseif (empty($confirm_password) || empty($password)) {
+          $_SESSION['msg']="<font color=\"red\"><b> All fields must be filled!</b></font>";
+          header("location:../signup/index.php?error=All fields must be filled!");
+        }elseif (empty($school) || empty($faculty)) {
+          $_SESSION['msg']="<font color=\"red\"><b> All fields must be filled!</b></font>";
+          header("location:../signup/index.php?error=All fields must be filled!");
+        }elseif (empty($level) ) {
+          $_SESSION['msg']="<font color=\"red\"><b> All fields must be filled!</b></font>";
+          header("location:../signup/index.php?error=All fields must be filled!");
 
+
+}else{
 
 
 $registration_date=date('l jS \of F Y h:i:s A');
@@ -56,16 +72,12 @@ while ($row=mysqli_fetch_array($imgquery)) {
   $id=$row["id"];
 }
 $setquery=mysqli_query($conn,"INSERT into profileimage SET userid='$id'");
+  $_SESSION["success"]="All you have to do now is Login";
   header("location:../login/");
 
 }
 
-}else {
-  $_SESSION['msg']="<font color=\"red\"><b> All fields must be filled!</b></font>";
-
-  header("location:../signup/index.php?error=All fields must be filled!");
 }
-
 
 }
 

@@ -1,9 +1,4 @@
-* {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -26,7 +21,7 @@ h1, h2 {
 h2 {
   font-weight: 400;
 }
-ul {
+.w {
   min-width: 40px;
   height: auto;
   position: absolute;
@@ -41,7 +36,7 @@ ul {
   background-color: #fff;
   border-radius: 20px;
 }
-ul li {
+.w .l {
   width: auto;
   height: 40px;
   margin: 0 5px;
@@ -52,32 +47,32 @@ ul li {
   cursor: pointer;
   position:
 }
-ul li:hover {
+.w .l:hover {
   color: #3a7eb1;
 }
-ul li i {
+.w .l i {
   font-size: 25px;
   vertical-align: middle;
   margin: 0 5px;
 }
-ul li:last-of-type {
+.w .l:last-of-type {
   width: 40px;
   height: 40px;
   margin: 0px;
 }
-ul li:last-of-type i {
+.w .l:last-of-type i {
   font-size: 30px;
 }
-ul li:last-of-type:hover i {
+.w .l:last-of-type:hover i {
   color: #3a7eb1;
 }
-ul li a {
+.w .l a {
   text-decoration: none;
   color: #74b6e8;
 }
-ul li a:hover {
+.w .l a:hover {
   color: #3a7eb1;
 }
-ul li a:visited {
+.w .l a:visited {
   text-decoration: underline;
 }

@@ -88,7 +88,7 @@ body {
 }
 /*buttons*/
 #msform .action-button {
-	width: 100px;
+	width:auto;
 	background: #27AE60;
 	font-weight: bold;
 	color: white;
@@ -139,17 +139,11 @@ body .navbar{
       z-index: 99;
     box-shadow: 0px 2px 20px -5px}
 
-    input.dirty:not(:focus):invalid {
-      background-color: #FFD9D9;
-    }
-    input.dirty:not(:focus):valid {
-      background-color: #D9FFD9;
-    }
 </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="../"><img src="../images/logoc.png" width="150px"></a>
+    <a class="navbar-brand" href="../"><img src="../../images/logoc.png" width="150px"></a>
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -157,7 +151,7 @@ body .navbar{
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="../" style="font-size: 16px;font-weight:bold;"> Home <span class="sr-only">Home</span></a>
+          <a class="nav-link" href="../../" style="font-size: 16px;font-weight:bold;"> Home <span class="sr-only">Home</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" style="font-size: 16px;font-weight:bold;">About</a>
@@ -176,37 +170,27 @@ body .navbar{
     echo"<div class=\"alert alert-warning\" style='text-align:center;'>";
 
     echo"<strong>";echo @$_SESSION['accessdenied'];
-  echo "</strong> To see them.
+  echo "</strong>
 </div>";
-}elseif (@$_SESSION['error']) {
-  echo"<div class=\"alert alert-warning\" style='text-align:center;'>";
-
-  echo"<strong>";echo @$_SESSION['error'];
-echo "</strong>
-</div>";
-if(@$_SESSION["success"]){
+}elseif (@$_SESSION['accessgranted']) {
   echo"<div class=\"alert alert-success\" style='text-align:center;'>";
 
-  echo"<strong>";echo @$_SESSION["success"];
+  echo"<strong>";echo @$_SESSION['accessgranted'];
 echo "</strong>
 </div>";
-}
 }?>
   <div class="container-fluid" id="c"></div>
   <div class="container-fluid">
-<form id="msform" action="../php/login_process.php" method="post">
+<form id="msform" action="../../php/sendemailauth.php" method="post">
 
       <fieldset>
         <h2 class="fs-title"><i class="fa fa-graduation-cap" aria-hidden="true"></i>StudyHUB</h2>
         <h3 class="fs-subtitle"><small>A Student's Paradise</small></h3>
         <label for="email">Email</label>
-        <input type="email" name="email" placeholder="123@example.com" autocomplete="" autofocus required/>
-        <label for="password">Password</label>
-        <input type="password" name="password" placeholder="12xxxx" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"required/>
-        <h3 class="fs-subtitle" style="color:#ff0000cf"><small>8 minimum atleast one letter and number</small></h3>
-        <input type="submit" name="next" class="next action-button" value="Login" />
-        <a href="../signup">Create Account?</a><p>
-        <a href="Forgot-password/">Forgot Password?</a>
+        <input type="email" name="email" placeholder="123@example.com" autocomplete="" autofocus/>
+
+        <input type="submit" name="next" class="next action-button" value="SEND PASSWORD LINK" />
+
       </fieldset>
     </form>
   </div>
@@ -236,7 +220,7 @@ for (var i = 0; i < inputs_len; i++) {
   input.addEventListener("invalid", addDirtyClass);
   input.addEventListener("valid", addDirtyClass);
 }</script>
-  <?php include("../php/javascriptlinks.php"); ?>
+  <?php include("../../php/javascriptlinks.php"); ?>
 </body>
 </html>
-<?php $_SESSION['accessdenied']=""; $_SESSION["success"]=""; $_SESSION['error']=""; ?>
+<?php $_SESSION['accessdenied']=""; ?>

@@ -12,7 +12,27 @@ if ($_SESSION["id"]) {
 <head>
   <title>StudiHUB | Materials</title>
   <meta name="theme-color" content="#153971">
-  <link rel="icon" sizes="192x192" href="../images/icon.png">
+<!--icons and logo -->
+<link rel="apple-touch-icon" sizes="57x57" href="../images/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../images/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../images/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../images/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../images/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../images/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../images/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../images/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../images/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="../images/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="StudiHUB|Materials" content="#ff0000">
+<meta name="StudiHUB|Materials" content="../images/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end of icon -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|Sansita|Source+Sans+Pro|Work+Sans" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -117,10 +137,12 @@ background-color: #ffffff!important;
 }
 .droplist ul{
   position: absolute;
+  padding: 0;
   left: 0;
+  text-align: center;
   right: 0;
   margin: auto;
-    width: 100%;
+  width: 100%;
   -webkit-padding-start: 0;
 }
 .droplist ul .list-group-item{

@@ -593,7 +593,7 @@ categories
 -->
 <!-- nav bar search -->
     <div class="col-sm-6 col-md-6 col-sm-offset-3">
-      <form class="form-inline" role="search" action="to.php" method="post">
+      <form class="form-inline" role="search" action="search-results.php" method="post">
         <div class="input-group stylish-input-group input-group-sm">
                       <input type="search" class="form-control"  placeholder="Search materials.." name="search_material" >
                       <span class="input-group-addon">
@@ -667,12 +667,12 @@ categories
     <div class="jumbotron">
     <h4>Filter Results</h4>
 
-        <form class="" action="index.html" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+        <form class="" method="get" action="search-results.php">
           <div class="searchwrapper">
 <!-- selectlist for university -->
           <label for="university">School
           <!--<select class="form-control" name="university" >-->
-            <input list="uni" placeholder="University" class="form-control">
+            <input list="uni" placeholder="University" class="form-control" name="university">
             <datalist id="uni" name="school"class="">
               <option disabled selected>University</option>
 
@@ -866,8 +866,10 @@ categories
       </label>
 
       <label for="level">Level
-      <select name="level"class="form-control">
-        <option selected>Level</option>
+      <input list="level" placeholder="Level" class="form-control" name="level">
+        <datalist id="level" name="level"class="">
+
+
         <option value="100">100 Level</option>
         <option value="200">200 Level</option>
         <option value="300">300 Level</option>
@@ -877,7 +879,7 @@ categories
         <option value="700">700 Level</option>
         <option value="not_in_school">Not in School</option>
 
-      </select>
+      </datalist>
     </label>
     <!-- selectlist for Category -->
     <label for="category">Category
@@ -895,10 +897,102 @@ categories
     </div>
     <div class="wrapper">
       <?php
-      if (isset($_POST["submit"])) {
+      if (isset($_GET["submit"])) {
+        # code...
+
+        $university=$conn->real_escape_string(htmlentities($_GET["university"],ENT_QUOTES)); /**/
+         $pieces = explode(" ", $university);                                                  /**/
+        $university=implode("_", $pieces);                                                    /**/
+         $faculty=$conn->real_escape_string(htmlentities($_GET["faculty"],ENT_QUOTES));       /**/
+         $fac = explode(" ", $faculty);                                                        /**/
+         $faculty=implode("_", $fac);                                                           /**/
+         $level=$conn->real_escape_string(htmlentities($_GET["level"],ENT_QUOTES));             /**/
+         $category=$conn->real_escape_string(htmlentities($_GET["category"],ENT_QUOTES));       /**/
+
+
+
+
+    //Do real escaping here
+
+    $query = "SELECT * FROM materials WHERE ";
+
+    //$conditions = array();
+
+    if(! empty($university)) {
+      $query .= "university='$university'";
+      if ($university!="") {
+
+              $query .=" AND ";
+        }
+    }
+
+    if(! empty($faculty)) {
+
+        $query .= "faculty='$faculty'";
+        if ($faculty!="") {
+              $query .=" AND ";
+          }
+    }
+
+    if(! empty($level)) {
+
+      $query .= "level='$level'";
+      if ($level!="") {
+            $query .=" AND ";
+        }
+    }
+    if(! empty($category)) {
+
+      $query .="cartegory='$category'";
+    }
+
+    $sql = $query;
+
+//echo $sql;
+    $filterresult = mysqli_query($conn,$sql);
+
+
+    //return $result;
+
+
+
+      if (mysqli_num_rows($filterresult) > 0){
+        # code...
+
+      while ($row=mysqli_fetch_assoc($filterresult)) {
+        $materialid=$row['id'];
+        $materialpath=$row['path'];
+        $materialuniversity=$row['university'];
+        $materiallevel=$row['level'];
+        $materialcourse_code=$row['course_code'];
+        //DISPLAYING THE Materials AFTER SEARCHING
+
+    echo "<a href=\"view-material/index.php?id=$materialid\">";
+        echo "<div class=\"card\">";
+        echo "<div class=\"pdflogo\"><i class=\"fa fa-file-pdf-o\"></i></div>";
+        echo "<span class=\"course-code\">".$materialcourse_code."</span>";
+        echo "<span class=\"university\">".$materialuniversity."</span>";
+      echo "</div>";
+      echo "</a>";
+      }
+    }else {
+
+          echo "<div class=\"card\">";
+          echo "<span class=\"course-code\">No materials Found<br> from filter</span>";
+          echo "<span class=\"university\">Please try using the Course code e.g AEE321</span>";
+        echo "</div>";
+    }
+
+
+     }else {
+       # code...
+if (isset($_POST["submit"])) {
+      $search_by_genericname=$conn->real_escape_string(htmlentities($_POST["search_material"],ENT_QUOTES));
+      if(!empty($search_by_genericname)){
+
         //Nav bar input---///
 
-        $search_by_genericname=$conn->real_escape_string(htmlentities($_POST["search_material"],ENT_QUOTES));
+        //$search_by_genericname=$conn->real_escape_string(htmlentities($_POST["search_material"],ENT_QUOTES));
         $find=$search_by_genericname;
         if (empty($find)) {
           header("location:index.php");
@@ -944,8 +1038,11 @@ categories
         $checkccode=$generic_searchbycourse_code;
       }
 
+      $countname=mysqli_num_rows($checkmname);
+      $countcode=mysqli_num_rows($checkccode);
+    echo "<div style='padding:5px; font-size:12px;'>we found <b>".$countcode."</b> results searching the Course Code and</div>";
+    echo "<div style='padding:5px;  font-size:12px;'>we found <b>".$countname."</b> results searching the Material name</div>";?>
 
-      ?>
       <?php if (isset($_SESSION["id"])) {
           //DISPLAYING THE Materials AFTER SEARCHING
       //$checkmname
@@ -1004,6 +1101,13 @@ categories
       echo "</div>";
   }
   }
+}
+}else {
+  echo "<div class=\"card\">";
+  echo "<span class=\"course-code\">No materials Found <br>searching material names</span>";
+  echo "<span class=\"university\">Please try using the Course code e.g AEE321</span>";
+echo "</div>";
+}
 }
 
       ?>
